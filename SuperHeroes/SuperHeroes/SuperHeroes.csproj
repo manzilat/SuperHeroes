@@ -195,20 +195,15 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\ApplicationDbContext.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SuperHeroController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201810251249506_SuperHeroes.cs" />
-    <Compile Include="Migrations\201810251249506_SuperHeroes.Designer.cs">
-      <DependentUpon>201810251249506_SuperHeroes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810251310283_Added properties to db context.cs" />
-    <Compile Include="Migrations\201810251310283_Added properties to db context.Designer.cs">
-      <DependentUpon>201810251310283_Added properties to db context.cs</DependentUpon>
+    <Compile Include="Migrations\201810251534517_initial migration and superheroes table.cs" />
+    <Compile Include="Migrations\201810251534517_initial migration and superheroes table.Designer.cs">
+      <DependentUpon>201810251534517_initial migration and superheroes table.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -277,10 +272,12 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Superhero\Index.cshtml" />
+    <Content Include="Views\Superhero\Create.cshtml" />
+    <Content Include="Views\Superhero\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Superhero\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -296,11 +293,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201810251249506_SuperHeroes.resx">
-      <DependentUpon>201810251249506_SuperHeroes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810251310283_Added properties to db context.resx">
-      <DependentUpon>201810251310283_Added properties to db context.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201810251534517_initial migration and superheroes table.resx">
+      <DependentUpon>201810251534517_initial migration and superheroes table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

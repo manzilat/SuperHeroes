@@ -7,7 +7,9 @@ using System.Web;
 namespace SuperHeroes.Models
 {
     public class SuperHero
-    {    [Key]
+    {
+        public static bool IsValid { get; internal set; }
+        [Key]
         public int SuperHeroID { get; set; }
         public string SuperHeroName { get; set; }
         public string AlterEgo { get; set; }

@@ -4,16 +4,15 @@ namespace SuperHeroes.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
-    using Microsoft.AspNet.Identity.EntityFramework;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Models.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<SuperHeroes.Models.ApplicationDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(Models.ApplicationDbContext context)
+        protected override void Seed(SuperHeroes.Models.ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

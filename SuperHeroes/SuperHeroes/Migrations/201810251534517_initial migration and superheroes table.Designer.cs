@@ -7,13 +7,13 @@ namespace SuperHeroes.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Addedpropertiestodbcontext : IMigrationMetadata
+    public sealed partial class initialmigrationandsuperheroestable : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Addedpropertiestodbcontext));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(initialmigrationandsuperheroestable));
         
         string IMigrationMetadata.Id
         {
-            get { return "201810251310283_Added properties to db context"; }
+            get { return "201810251534517_initial migration and superheroes table"; }
         }
         
         string IMigrationMetadata.Source
