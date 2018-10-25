@@ -10,6 +10,8 @@ namespace SuperHeroes.Controllers
     public class SuperHeroController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        private int id;
+
         public ActionResult Index()
         {
             var Superherolist = new List<SuperHero>
@@ -22,17 +24,18 @@ namespace SuperHeroes.Controllers
             return View(superheroes);
         }
         [HttpGet]
-        public ActionResult Edit()
+        public ActionResult Edit(int id)
 
         {
-            var id = Request.QueryString["id"];
-            return View("index");
+            var superhero = db.SuperHeroes.Where(s => s.SuperHeroID == id).Single();
+            return View();
         }
 
         [HttpPost]
 
-        public ActionResult Edit(int id, string name,string alterEgo, string ability1, string ability2,string phrase)
+        public ActionResult Edit(SuperHero superHero)
         {
+            var superhero = db.SuperHeroes.Where(s => s.SuperHeroID == id).Single();
             //var ID     = Request["SuperHeroID"];
             //var Name   = Request["SuperHeroName"];
             //var AlterEgo        = Request["AlterEgo"];
@@ -45,16 +48,8 @@ namespace SuperHeroes.Controllers
 
         public ActionResult Create(SuperHero newHero)
         {
-            if (SuperHero.IsValid)
-            {
-                db.SuperHeroes.Add(newHero);
-                db.SaveChanges();
-                return View("List", db.SuperHeroes.ToList());
-            }
-            else
-            {
-                return View("List", db.SuperHeroes.ToList());
-            }
+            SuperHero CreateSuperHero = new SuperHero();
+            return View();
         }
 
 
