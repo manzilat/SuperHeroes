@@ -14,12 +14,7 @@ namespace SuperHeroes.Controllers
 
         public ActionResult Index()
         {
-            var Superherolist = new List<SuperHero>
-            {
-                new SuperHero() { SuperHeroID = 1, SuperHeroName = "Clark Kent", AlterEgo = "SuperMan",PrimarySuperHeroAbility = "Super Senses",SecondarySuperHeroAbility="Super Speed" },
-               new SuperHero() { SuperHeroID = 2, SuperHeroName = "Bruce Wayne ", AlterEgo = "BatMan", SecondarySuperHeroAbility = "Batman Immortal" },
-
-            };
+           
             var superheroes = db.SuperHeroes;
             return View(superheroes);
         }
@@ -30,52 +25,48 @@ namespace SuperHeroes.Controllers
             var superhero = db.SuperHeroes.Where(s => s.SuperHeroID == id).Single();
             return View();
         }
+        public ActionResult Create()
+        {
+            SuperHero ListOfHero = new SuperHero();
+            return View(ListOfHero);
+        }
+        [HttpPost]
+        public ActionResult Create([Bind(Include = "SuperHeroName,AlterEgo,PrimarySuperHeroAbility,SecondarySuperHeroAbility,CatchPhrase")] SuperHero SuperHero)
+        {
+
+            db.SuperHeroes.Add(SuperHero);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+
+        }
 
         [HttpPost]
 
         public ActionResult Edit(SuperHero superHero)
         {
-            var superhero = db.SuperHeroes.Where(s => s.SuperHeroID == id).Single();
-            //var ID     = Request["SuperHeroID"];
-            //var Name   = Request["SuperHeroName"];
-            //var AlterEgo        = Request["AlterEgo"];
-            //var Ability1 = Request["PrimarySuperHeroAbility"];
-            //var Ability2 = Request["SecondarySuperHeroAbility"];
-            //var Phrase = Request["Catchphrase"];
+            var Superhero = db.SuperHeroes.Where(s => s.SuperHeroID == id).Single();
+           
 
             return View("Index");
         }
 
-        public ActionResult Create(SuperHero newHero)
-        {
-            SuperHero CreateSuperHero = new SuperHero();
-            return View();
-        }
-
-
+      
         [HttpDelete]
-        public ActionResult DeleteAction()
+        public ActionResult Delete(int id)
         {
+             SuperHero Hero = db.SuperHeroes.Where(s => s.SuperHeroID == id).Single();
+            db.SuperHeroes.Remove(Hero);
             return View("Index");
         }
 
-        [HttpHead]
-        public ActionResult HeadAction()
+        
+        public ActionResult Details(int id)
         {
-            return View("Index");
+            SuperHero hero = db.SuperHeroes.Where(s => s.SuperHeroID == id).Single();
+            return View(hero);
+            
         }
 
-        [HttpOptions]
-        public ActionResult OptionsAction()
-        {
-            return View("Index");
-        }
-
-        [HttpPatch]
-        public ActionResult PatchAction()
-        {
-            return View("Index");
-        }
     }
 
 }
