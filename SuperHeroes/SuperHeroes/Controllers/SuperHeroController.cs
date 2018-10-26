@@ -10,7 +10,7 @@ namespace SuperHeroes.Controllers
     public class SuperHeroController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-        private int id;
+      
 
         public ActionResult Index()
         {
@@ -40,38 +40,41 @@ namespace SuperHeroes.Controllers
         }
         
         [HttpGet]
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int SuperHeroID)
 
         {
-            var superhero = db.SuperHeroes.Where(s => s.SuperHeroID == id).Single();
+            var superhero = db.SuperHeroes.Where(s => s.SuperHeroID == SuperHeroID).Single();
             return View();
         }
 
         [HttpPost]
-        public ActionResult Edit(SuperHero superHero)
+        public ActionResult Edit(SuperHero SuperHeroID)
         {
-            var Superhero = db.SuperHeroes.Where(s => s.SuperHeroID == id).Single();
+            var Superhero = db.SuperHeroes.Where(s => s.SuperHeroID == s.SuperHeroID).Single();
            
 
             return View("Index");
         }
-
       
-        [HttpDelete]
-        public ActionResult Delete(int id)
+
+        
+        public ActionResult Delete(int SuperHeroID)
         {
-             SuperHero Hero = db.SuperHeroes.Where(s => s.SuperHeroID == id).Single();
-            db.SuperHeroes.Remove(Hero);
-            return View("Index");
+             SuperHero SuperHero = db.SuperHeroes.Where(s => s.SuperHeroID == SuperHeroID).Single();
+            db.SuperHeroes.Remove(SuperHero);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         
-        public ActionResult Details(int id)
+        public ActionResult Details(int SuperHeroID)
         {
-            SuperHero hero = db.SuperHeroes.Where(s => s.SuperHeroID == id).Single();
-            return View(hero);
+            SuperHero hero = db.SuperHeroes.Where(s => s.SuperHeroID == SuperHeroID).Single();
+            return View("Index");
             
         }
+
+
 
     }
 
