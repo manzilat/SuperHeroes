@@ -1,0 +1,60 @@
+﻿@model IEnumerable<SuperHeroes.Models.SuperHero>
+
+@{
+    ViewBag.Title = "List";
+}
+
+
+<h2>List</h2>
+
+<p>
+  
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SuperHeroName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AlterEgo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PrimarySuperHeroAbility)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SecondarySuperHeroAbility)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Catchphrase)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SuperHeroName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AlterEgo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrimarySuperHeroAbility)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SecondarySuperHeroAbility)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Catchphrase)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.SuperHeroID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.SuperHeroID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.SuperHeroID })
+            </td>
+        </tr>
+    }
+
+</table>

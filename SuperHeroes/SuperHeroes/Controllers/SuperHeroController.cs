@@ -18,13 +18,12 @@ namespace SuperHeroes.Controllers
             var superheroes = db.SuperHeroes;
             return View(superheroes);
         }
-        [HttpGet]
-        public ActionResult Edit(int id)
-
+        
+        public ActionResult List()
         {
-            var superhero = db.SuperHeroes.Where(s => s.SuperHeroID == id).Single();
-            return View();
+            return View(db.SuperHeroes.ToList());
         }
+        [HttpGet]
         public ActionResult Create()
         {
             SuperHero ListOfHero = new SuperHero();
@@ -39,9 +38,16 @@ namespace SuperHeroes.Controllers
             return RedirectToAction("Index");
 
         }
+        
+        [HttpGet]
+        public ActionResult Edit(int id)
+
+        {
+            var superhero = db.SuperHeroes.Where(s => s.SuperHeroID == id).Single();
+            return View();
+        }
 
         [HttpPost]
-
         public ActionResult Edit(SuperHero superHero)
         {
             var Superhero = db.SuperHeroes.Where(s => s.SuperHeroID == id).Single();
